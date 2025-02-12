@@ -1,13 +1,6 @@
-import './tag.css';
 import template from './tag.hbs';
-import Tag from './Tag.js';
 
-const render = (args) => {
-  const html = template(args);
-
-  new Tag();
-  return html;
-};
+const render = (args) => template(args);
 
 export default {
   title: 'components/base/Tag',

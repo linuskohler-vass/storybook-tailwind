@@ -1,10 +1,18 @@
-import path from "path";
+const path = require('path');
+
+/* eslint-disable import/no-extraneous-dependencies */
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+/* eslint-enable import/no-extraneous-dependencies */
 
 /** @type { import('@storybook/html-webpack5').StorybookConfig } */
 const config = {
   stories: [
     "../stories/**/*.mdx",
     "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    '../src/**/*.stories.js',
+  ],
+  staticDirs: [
+    '../dist',
   ],
   addons: [
     "@storybook/addon-webpack5-compiler-swc",
@@ -23,6 +31,14 @@ const config = {
         },
       },
     });
+
+    config.plugins.push(
+      new BrowserSyncPlugin({
+        host: 'localhost',
+        port: 3000,
+        proxy: 'http://localhost:6006',
+      }),
+    );
 
     return config;
   },

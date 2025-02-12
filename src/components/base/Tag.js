@@ -1,6 +1,8 @@
+import './tag.css';
+
 export default class Tag {
 
-  constructor() {
+  constructor(el) {
     // selectors
     this.domSelectors = {
       tag: '.b_tag',
@@ -11,8 +13,7 @@ export default class Tag {
       active: 'active',
     };
 
-    this.count = 2;
-    this.element = document.querySelector(this.domSelectors.tag);
+    this.element = el;
 
     // init
     this.init();
@@ -20,6 +21,6 @@ export default class Tag {
 
   init() {
     console.log("Init for tag called!");
-    console.log(this.count);
+    console.log(this.element);
   }
 }
