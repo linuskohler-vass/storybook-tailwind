@@ -46,6 +46,7 @@
     "sass": "^1.84.0",
     "sass-loader": "^16.0.4",
     "storybook": "^8.5.4",
-    "webpack": "^5.97.1"
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
   }
 }

@@ -1,13 +1,15 @@
-/** @type { import('@storybook/html').Preview } */
-const preview = {
-  parameters: {
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
-    },
+/* eslint-disable import/no-extraneous-dependencies */
+const handlebars = require('handlebars');
+/* eslint-enable import/no-extraneous-dependencies */
+
+handlebars.registerHelper('eq', (arg1, arg2, options) => (
+  (arg1 === arg2) ? options.fn(this) : options.inverse(this)
+));
+
+/* eslint-disable import/prefer-default-export */
+export const parameters = {
+  fetchMock: {
+    debug: true,
   },
 };
-
-export default preview;
+/* eslint-enable import/prefer-default-export */

@@ -40,7 +40,7 @@ const components = {
 }
  */
 
-import('./components/base/Tag');
+import Tag from './components/base/Tag';
 
 const components = {
   tag: {
