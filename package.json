@@ -1,0 +1,36 @@
+{
+  "name": "storybook-tailwind",
+  "version": "1.0.0",
+  "description": "Demo setup with Storybook and tailwind",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linuskohler-vass/storybook-tailwind.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linuskohler-vass/storybook-tailwind/issues"
+  },
+  "homepage": "https://github.com/linuskohler-vass/storybook-tailwind#readme",
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.4",
+    "@storybook/addon-essentials": "^8.5.4",
+    "@storybook/addon-interactions": "^8.5.4",
+    "@storybook/addon-webpack5-compiler-swc": "^2.0.0",
+    "@storybook/blocks": "^8.5.4",
+    "@storybook/html": "^8.5.4",
+    "@storybook/html-webpack5": "^8.5.4",
+    "@storybook/test": "^8.5.4",
+    "handlebars": "^4.7.8",
+    "handlebars-layouts": "^3.1.4",
+    "handlebars-loader": "^1.7.3",
+    "storybook": "^8.5.4"
+  }
+}
