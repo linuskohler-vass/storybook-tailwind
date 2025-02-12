@@ -14,7 +14,7 @@ A: your component does not need javascript
 Import the js:
 import('./components/foo/foo');
 
-B: your component does not need javascript
+B: your component needs javascript
 ------------------------------------------
 
 1. step:
@@ -53,8 +53,6 @@ const components = {
 // --- Initialization -----------
 // ------------------------------
 function doInit() {
-  console.log("Do init");
-
   // init components
   Object.keys(components).forEach((key) => {
     const component = components[key];
@@ -65,7 +63,6 @@ function doInit() {
 }
 
 if (document.readyState !== 'loading') {
-  console.log("Call init");
   doInit();
 } else {
   document.addEventListener('DOMContentLoaded', doInit);

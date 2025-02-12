@@ -7,8 +7,6 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 /** @type { import('@storybook/html-webpack5').StorybookConfig } */
 const config = {
   stories: [
-    "../stories/**/*.mdx",
-    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     '../src/**/*.stories.js',
   ],
   staticDirs: [
