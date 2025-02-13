@@ -39,7 +39,6 @@ const components = {
   ...
 }
  */
-
 import Tag from './components/base/Tag';
 
 const components = {

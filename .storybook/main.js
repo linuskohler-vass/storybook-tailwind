@@ -17,6 +17,7 @@ const config = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
+    '@storybook/addon-styling-webpack'
   ],
   webpackFinal: (config) => {
     config.module.rules.push({
