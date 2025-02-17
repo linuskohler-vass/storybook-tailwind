@@ -1,4 +1,4 @@
-import './tag.scss';
+//import './tag.scss';
 
 export default class Tag {
 
@@ -22,5 +22,9 @@ export default class Tag {
   init() {
     console.log("Init for tag called!");
     console.log(this.element);
+
+    this.element.node.onclick = (ev) => {
+      console.log("Clicked on tag!");
+    }
   }
 }

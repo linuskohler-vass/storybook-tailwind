@@ -39,6 +39,8 @@ const components = {
   ...
 }
  */
+import './components/base/tag.scss';
+
 import Tag from './components/base/Tag';
 
 const components = {
