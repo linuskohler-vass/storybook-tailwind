@@ -23,8 +23,8 @@ export default class Tag {
     console.log("Init for tag called!");
     console.log(this.element);
 
-    this.element.node.onclick = (ev) => {
+    this.element.addEventListener('click', (ev) => {
       console.log("Clicked on tag!");
-    }
+    });
   }
 }

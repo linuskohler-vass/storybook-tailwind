@@ -33,7 +33,6 @@
     "@storybook/html": "^8.5.4",
     "@storybook/html-webpack5": "^8.5.4",
     "@storybook/test": "^8.5.4",
-    "@tailwindcss/cli": "^4.0.6",
     "@tailwindcss/postcss": "^4.0.6",
     "autoprefixer": "^10.4.20",
     "babel-loader": "^9.2.1",
