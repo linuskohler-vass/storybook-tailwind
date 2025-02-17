@@ -123,7 +123,7 @@ module.exports = (env) => ({
     },
   },
   mode: env.prod ? 'production' : 'development',
-  entry: './src/index.js',
+   entry: './src/index.js',
   output: {
     filename: `js/[name]${env.prod ? '.[contenthash]' : ''}.js`,
     path: path.resolve(__dirname, 'dist'),

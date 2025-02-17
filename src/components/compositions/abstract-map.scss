@@ -1,0 +1,32 @@
+.swg-abstract-map-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'header header' 'projects map';
+  gap: 60px;
+
+  &__header {
+    grid-area: header;
+  }
+
+  &__projects {
+    grid-area: projects;
+  }
+
+  &__project {
+    padding: 10px 20px;
+
+    &:hover {
+      background-color: lightgray;
+    }
+  }
+
+  &__map {
+    grid-area: map;
+    width: 400px;
+  }
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}

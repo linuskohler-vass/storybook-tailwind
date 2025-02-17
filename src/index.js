@@ -41,11 +41,16 @@ const components = {
  */
 
 import Tag from './components/base/Tag';
+import AbstractMap from './components/compositions/AbstractMap';
 
 const components = {
   tag: {
     Component: Tag,
     dataInit: 'tag',
+  },
+  abstractMap: {
+    Component: AbstractMap,
+    dataInit: 'abstract-map',
   },
 };
 
