@@ -23,8 +23,10 @@ export default class AbstractMap {
   }
 
   init() {
-    this.abstractMapSVG = this.wrapperElement.querySelector("svg");
-    this.swgNetworkProjects = Array.from(this.wrapperElement.querySelectorAll(".swg-abstract-map-main__project"));
+    this.abstractMapSVG = this.wrapperElement.querySelector(".swg-abstract-map__svg");
+    this.swgMap = this.wrapperElement.querySelector(".swg-abstract-map__map");
+    this.swgProjects = this.wrapperElement.querySelector(".swg-abstract-map__projects");
+    this.swgNetworkProjects = Array.from(this.wrapperElement.querySelectorAll(".swg-abstract-map__project"));
     this.imageElement = null;
     this.secondImageElement = null;
 
@@ -56,11 +58,11 @@ export default class AbstractMap {
   initialize() {
     if (this.swgNetworkProjects.length) {
       if (this.isAccordionView) {
-        console.log("Show accordion view");
-        //this.toggleAccordion(this.swgNetworkProjects[0]);
+        this.toggleAccordion(this.swgNetworkProjects[0]);
       }
 
       this.highlightProject(this.swgNetworkProjects[0]);
+      this.moveBackgroundToInitialPosition();
       this.addListeners();
     }
   }
@@ -76,19 +78,23 @@ export default class AbstractMap {
     console.log(this.swgNetworkProjects);
 
     this.swgNetworkProjects.forEach((project) => {
-      project.addEventListener("mouseenter", () => {
-        this.highlightProject(project);
-      });
+      if (!this.isAccordionView) {
+        project.addEventListener("mouseenter", () => {
+          this.highlightProject(project);
+          this.moveBackgroundBehindProject(project);
+        });
+      } else {
+        project.addEventListener("click", () => {
+          this.toggleAccordion(project);
+        });
+      }
     });
   }
 
   removeListeners() {
     this.swgNetworkProjects.forEach((project) => {
-      project.removeEventListener("mouseenter", project.__highlightHandler);
-      project.removeEventListener("click", project.__toggleHandler);
-
-      delete project.__highlightHandler;
-      delete project.__toggleHandler;
+      project.removeEventListener("mouseenter");
+      project.removeEventListener("click");
     });
   }
 
@@ -96,7 +102,6 @@ export default class AbstractMap {
     this.removeProjectHighlight();
 
     const projectData = this.getProjectData(project);
-    console.log(projectData.pointIDs, "project data");
 
     this.assignCurrentActiveProjectData(projectData);
     this.highlightEllipses(this.ellipseHighlightColor, this.getEllipsesById(projectData.pointIDs));
@@ -129,10 +134,11 @@ export default class AbstractMap {
   }
 
   toggleAccordion(project) {
-    const isOpen = project.classList.contains("open");
-    this.swgNetworkProjects.forEach((p) => p.classList.remove("open"));
+    const isOpen = project.classList.contains("swg-abstract-map__project--open");
+    this.swgNetworkProjects.forEach((p) => p.classList.remove("swg-abstract-map__project--open"));
     if (!isOpen) {
-      project.classList.add("open");
+      project.classList.add("swg-abstract-map__project--open");
+      this.highlightProject(project);
     }
   }
 
@@ -141,8 +147,8 @@ export default class AbstractMap {
       this.imageElement = this.createImageElement("img1 active");
       this.secondImageElement = this.createImageElement("img2");
 
-      this.wrapperElement.appendChild(this.imageElement);
-      this.wrapperElement.appendChild(this.secondImageElement);
+      this.swgMap.appendChild(this.imageElement);
+      this.swgMap.appendChild(this.secondImageElement);
     }
 
     this.positionImageElement([this.imageElement, this.secondImageElement]);
@@ -188,9 +194,7 @@ export default class AbstractMap {
 
   positionImageElement(images) {
     images.forEach((image) => {
-      const mapRect = this.wrapperElement.getBoundingClientRect();
-
-      console.log(this.imagePointID, "imagePointId");
+      const mapRect = this.swgMap.getBoundingClientRect();
 
       const imagePoint = this.abstractMapSVG.querySelector(`#${this.imagePointID}`);
       const imagePointRect = imagePoint.getBoundingClientRect();
@@ -222,7 +226,6 @@ export default class AbstractMap {
   highlightEllipses(color, ellipses) {
     ellipses.forEach((ellipse) => {
       ellipse.setAttribute("fill", color);
-      console.log("Fill ellipse");
     });
   }
 
@@ -232,6 +235,20 @@ export default class AbstractMap {
 
   getAllEllipses() {
     return Array.from(this.abstractMapSVG.querySelectorAll("ellipse"));
+  }
+
+  moveBackgroundBehindProject(project) {
+    const projectRect = project.getBoundingClientRect();
+    const projectsRect = this.swgProjects.getBoundingClientRect();
+    const projectTop = projectRect.top - projectsRect.top;
+
+    const background = this.wrapperElement.querySelector(".swg-abstract-map__background");
+    background.style.transform = `translate(0, ${projectTop}px)`;
+  }
+
+  moveBackgroundToInitialPosition() {
+    const background = this.wrapperElement.querySelector(".swg-abstract-map__background");
+    background.style.transform = `translate(0, 0)`;
   }
 }
 

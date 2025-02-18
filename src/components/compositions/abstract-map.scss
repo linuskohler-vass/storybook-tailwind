@@ -1,8 +1,13 @@
-.swg-abstract-map-main {
+.swg-abstract-map {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: 'header header' 'projects map';
+  grid-template-columns: 1fr;
+  grid-template-areas: 'header' 'map' 'projects';
   gap: 60px;
+
+  @media screen and (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'header header' 'projects map';
+  }
 
   &__header {
     grid-area: header;
@@ -10,23 +15,107 @@
 
   &__projects {
     grid-area: projects;
+    position: relative;
   }
 
   &__project {
     padding: 10px 20px;
 
     &:hover {
+      cursor: pointer;
+    }
+
+    &__title {
+
+    }
+
+    &__description {
+      display: none;
+
+      .swg-abstract-map__project--open & {
+        display: -webkit-box;
+      }
+
+      @media screen and (min-width: 1024px) {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
+    }
+
+    &__link {
+      display: none;
+
+      .swg-abstract-map__project--open & {
+        display: -webkit-box;
+      }
+
+      @media screen and (min-width: 1024px) {
+        display: block;
+      }
+    }
+  }
+
+  &__background {
+    display: none;
+
+    @media screen and (min-width: 1024px) {
+      display: block;
       background-color: lightgray;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      width: 100%;
+      height: 170px;
+      transition: transform 0.5s ease-in-out;
     }
   }
 
   &__map {
     grid-area: map;
     width: 400px;
+    height: 300px;
+    position: relative;
+
+    @media screen and (min-width: 1024px) {
+      height: unset;
+    }
+  }
+
+  &__svg {
+    position: absolute;
+  }
+
+  &__highlighted-image {
+    position: absolute;
+    opacity: 0;
+    z-index: 15;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
+    top: 0;
+    left: 0;
+    border: none;
+    object-fit: cover;
+
+    &.img1 {
+      opacity: 1;
+    }
+
+    &.img2 {
+      opacity: 0;
+    }
   }
 }
 
 img {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  position: absolute;
 }
