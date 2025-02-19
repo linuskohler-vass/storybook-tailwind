@@ -5,32 +5,34 @@ export default class AbstractMap {
   constructor(el) {
     // selectors
     this.domSelectors = {
-
+      mapSvg: ".swg-abstract-map__svg",
+      map: ".swg-abstract-map__map",
+      projects: ".swg-abstract-map__projects",
+      project: ".swg-abstract-map__project",
+      background: ".swg-abstract-map__background"
     };
 
     // classes
     this.classes = {
-
+      highlightedImage: "swg-abstract-map__highlighted-image",
+      projectOpen: "swg-abstract-map__project--open",
     };
 
     this.element = el;
-
-    this.wrapperElement = el;
-    console.log(this.wrapperElement, "wrapper el");
+    console.log(this.element, "wrapper el");
 
     // init
     this.init();
   }
 
   init() {
-    this.abstractMapSVG = this.wrapperElement.querySelector(".swg-abstract-map__svg");
-    this.swgMap = this.wrapperElement.querySelector(".swg-abstract-map__map");
-    this.swgProjects = this.wrapperElement.querySelector(".swg-abstract-map__projects");
-    this.swgNetworkProjects = Array.from(this.wrapperElement.querySelectorAll(".swg-abstract-map__project"));
+    this.abstractMapSVG = this.element.querySelector(this.domSelectors.mapSvg);
+    this.swgMap = this.element.querySelector(this.domSelectors.map);
+    this.swgProjects = this.element.querySelector(this.domSelectors.projects);
+    this.swgNetworkProjects = Array.from(this.element.querySelectorAll(this.domSelectors.project));
+
     this.imageElement = null;
     this.secondImageElement = null;
-
-    this.highlightedImageClass = "swg-abstract-map__highlighted-image";
 
     this.ellipseHighlightColor = "#E4032E";
     this.ellipseFillColor = "#B2B2B2";
@@ -134,10 +136,10 @@ export default class AbstractMap {
   }
 
   toggleAccordion(project) {
-    const isOpen = project.classList.contains("swg-abstract-map__project--open");
-    this.swgNetworkProjects.forEach((p) => p.classList.remove("swg-abstract-map__project--open"));
+    const isOpen = project.classList.contains(this.classes.projectOpen);
+    this.swgNetworkProjects.forEach((p) => p.classList.remove(this.classes.projectOpen));
     if (!isOpen) {
-      project.classList.add("swg-abstract-map__project--open");
+      project.classList.add(this.classes.projectOpen);
       this.highlightProject(project);
     }
   }
@@ -164,7 +166,7 @@ export default class AbstractMap {
 
   createImageElement(classes) {
     const img = document.createElement("img");
-    img.className = `${this.highlightedImageClass} ${classes}`;
+    img.className = `${this.classes.highlightedImage} ${classes}`;
     return img;
   }
 
@@ -242,12 +244,12 @@ export default class AbstractMap {
     const projectsRect = this.swgProjects.getBoundingClientRect();
     const projectTop = projectRect.top - projectsRect.top;
 
-    const background = this.wrapperElement.querySelector(".swg-abstract-map__background");
+    const background = this.element.querySelector(".swg-abstract-map__background");
     background.style.transform = `translate(0, ${projectTop}px)`;
   }
 
   moveBackgroundToInitialPosition() {
-    const background = this.wrapperElement.querySelector(".swg-abstract-map__background");
+    const background = this.element.querySelector(".swg-abstract-map__background");
     background.style.transform = `translate(0, 0)`;
   }
 }
