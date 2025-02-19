@@ -253,17 +253,3 @@ export default class AbstractMap {
     background.style.transform = `translate(0, 0)`;
   }
 }
-
-function doInit() {
-  document
-    .querySelectorAll(`[data-init="abstract-map"]`)
-    .forEach((element) => new AbstractMap(element));
-}
-
-if (document.readyState !== 'loading') {
-  doInit();
-} else {
-  document.addEventListener('DOMContentLoaded', doInit);
-}
-
-
