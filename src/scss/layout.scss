@@ -14,3 +14,20 @@ body {
   font-family: $font-family;
 }
 
+.swg-button {
+  display: block;
+  padding: 10px 25px;
+  background: #000;
+  line-height: 1.4;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover {
+    background: #a0a0a0;
+  }
+}

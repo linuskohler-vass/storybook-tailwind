@@ -1,13 +1,13 @@
 .swg-abstract-map {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-areas: 'header' 'map' 'projects';
+  grid-template-areas: 'header' 'map' 'projects' 'button-container';
   gap: 20px 60px;
   max-width: 1400px;
 
   @media screen and (min-width: 1024px) {
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: 'header header' 'projects map';
+    grid-template-areas: 'header header' 'projects map' 'button-container button-container';
   }
 
   &__header {
@@ -132,7 +132,6 @@
   }
 
   &__svg {
-    position: absolute;
   }
 
   &__highlighted-image {
@@ -154,6 +153,18 @@
 
     &.img2 {
       opacity: 0;
+    }
+  }
+
+  &__button-container {
+    grid-area: button-container;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+
+    @media screen and (min-width: 1024px) {
+      margin: 50px 0;
     }
   }
 }

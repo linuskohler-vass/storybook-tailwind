@@ -1,5 +1,11 @@
 import './abstract-map.scss';
 
+import {
+  appendElement,
+  getElementAttribute,
+  setElementAttribute,
+} from "../utils/swgElementUtils";
+
 export default class AbstractMap {
 
   constructor(el) {
@@ -58,6 +64,10 @@ export default class AbstractMap {
   }
 
   initialize() {
+    if (this.shouldShowMapEllipsesIDs()) {
+      this.showMapEllipsesIDs();
+    }
+
     if (this.swgNetworkProjects.length) {
       if (this.isAccordionView) {
         this.toggleAccordion(this.swgNetworkProjects[0]);
@@ -221,6 +231,36 @@ export default class AbstractMap {
           this.newTop = `${top + this.offset}px`;
           this.newLeft = `${left}px`;
           break;
+      }
+    });
+  }
+
+  shouldShowMapEllipsesIDs() {
+    const element = document.querySelector('[data-edit-mode]');
+    return element && element.getAttribute('data-edit-mode') === 'true';
+  }
+
+  showMapEllipsesIDs() {
+    const ellipses = this.getAllEllipses();
+    const svgNS = "http://www.w3.org/2000/svg";
+
+    ellipses.forEach((ellipse) => {
+      const ellipseId = ellipse.id;
+      if (ellipseId && ellipseId.startsWith("ellipse")) {
+        const ellipseNumberID = ellipseId.replace("ellipse", "");
+        const text = document.createElementNS(svgNS, "text");
+        const textAttributes = [
+          {name: "x", value: getElementAttribute(ellipse, "cx")},
+          {name: "y", value: getElementAttribute(ellipse, "cy")},
+          {name: "text-anchor", value: "middle"},
+          {name: "dominant-baseline", value: "middle"},
+          {name: "fill", value: "black"},
+          {name: "font-size", value: "6px"}
+        ];
+
+        setElementAttribute(text, textAttributes);
+        text.textContent = ellipseNumberID;
+        appendElement(this.abstractMapSVG, [text]);
       }
     });
   }
