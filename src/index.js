@@ -39,6 +39,7 @@ const components = {
   ...
 }
  */
+import './components/base/tag.scss';
 
 import Tag from './components/base/Tag';
 import AbstractMap from './components/compositions/AbstractMap';

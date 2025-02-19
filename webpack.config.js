@@ -50,6 +50,26 @@ const generateRules = () => {
   });
 
   rules.push({
+    test: /\.css$/i,
+    use: [
+      MiniCssExtractPlugin.loader,
+      'css-loader',
+      {
+        loader: 'postcss-loader',
+        options: {
+          postcssOptions: {
+            plugins: [
+              [
+                'autoprefixer',
+              ],
+            ],
+          },
+        },
+      },
+    ],
+  });
+
+  rules.push({
     test: /\.scss$/i,
     use: [
       MiniCssExtractPlugin.loader,
@@ -109,21 +129,12 @@ module.exports = (env) => ({
       '/dist',
     ],
   },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-      cacheGroups: {
-        styles: {
-          name: 'main',
-          type: 'css/mini-extract',
-          chunks: 'all',
-          enforce: true,
-        },
-      },
-    },
-  },
+
   mode: env.prod ? 'production' : 'development',
-   entry: './src/index.js',
+  entry: {
+    main: './src/index.js',
+    tailwind: './src/tailwind.css',
+  },
   output: {
     filename: `js/[name]${env.prod ? '.[contenthash]' : ''}.js`,
     path: path.resolve(__dirname, 'dist'),
