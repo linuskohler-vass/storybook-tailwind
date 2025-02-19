@@ -1,0 +1,16 @@
+@font-face {
+  font-family: TradeNextGothic;
+  src: url("../assets/fonts/TradeGothicNextLTW05-Normal.woff2")
+  format("woff2"),
+  url("../assets/fonts/TradeGothicNextLTW05-Normal.woff")
+  format("woff");
+  font-display: fallback;
+  font-weight: normal !important;
+}
+
+$font-family: "TradeNextGothic", Arial, sans-serif;
+
+body {
+  font-family: $font-family;
+}
+

@@ -112,6 +112,7 @@ module.exports = (env) => ({
 
   mode: env.prod ? 'production' : 'development',
   entry: {
+    layout: './src/scss/layout.js',
     tag: './src/components/base/Tag.js',
     abstractMap: './src/components/compositions/AbstractMap.js'
   },

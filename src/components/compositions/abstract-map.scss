@@ -2,7 +2,8 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas: 'header' 'map' 'projects';
-  gap: 60px;
+  gap: 20px 60px;
+  max-width: 1400px;
 
   @media screen and (min-width: 1024px) {
     grid-template-columns: 1fr 1fr;
@@ -26,7 +27,21 @@
     }
 
     &__title {
+      display: flex;
+      justify-content: space-between;
 
+      &::after {
+        content: url('../../assets/images/sg-anchor_arrow_marked.svg');
+        display: block;
+        width: 40px;
+        height: 40px;
+      }
+
+      @media screen and (min-width: 1024px) {
+        &::after {
+          content: '';
+        }
+      }
     }
 
     &__description {
@@ -46,6 +61,14 @@
 
     &__link {
       display: none;
+      font-size: 14px;
+      line-height: 23px;
+      text-align: left;
+      color: black;
+
+      &:hover {
+        color: #e4032e;
+      }
 
       .swg-abstract-map__project--open & {
         display: -webkit-box;
@@ -62,7 +85,7 @@
 
     @media screen and (min-width: 1024px) {
       display: block;
-      background-color: lightgray;
+      background-color: whitesmoke;
       position: absolute;
       top: 0;
       left: 0;
@@ -70,14 +93,14 @@
       bottom: 0;
       z-index: -1;
       width: 100%;
-      height: 170px;
+      height: 200px;
       transition: transform 0.5s ease-in-out;
     }
   }
 
   &__map {
     grid-area: map;
-    width: 400px;
+    width: 100%;
     height: 300px;
     position: relative;
 
