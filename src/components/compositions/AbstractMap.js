@@ -252,3 +252,16 @@ export default class AbstractMap {
   }
 }
 
+function doInit() {
+  document
+    .querySelectorAll(`[data-init="abstract-map"]`)
+    .forEach((element) => new AbstractMap(element));
+}
+
+if (document.readyState !== 'loading') {
+  doInit();
+} else {
+  document.addEventListener('DOMContentLoaded', doInit);
+}
+
+

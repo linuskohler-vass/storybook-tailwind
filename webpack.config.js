@@ -109,21 +109,12 @@ module.exports = (env) => ({
       '/dist',
     ],
   },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-      cacheGroups: {
-        styles: {
-          name: 'main',
-          type: 'css/mini-extract',
-          chunks: 'all',
-          enforce: true,
-        },
-      },
-    },
-  },
+
   mode: env.prod ? 'production' : 'development',
-   entry: './src/index.js',
+  entry: {
+    tag: './src/components/base/Tag.js',
+    abstractMap: './src/components/compositions/AbstractMap.js'
+  },
   output: {
     filename: `js/[name]${env.prod ? '.[contenthash]' : ''}.js`,
     path: path.resolve(__dirname, 'dist'),
