@@ -41,9 +41,9 @@ const components = {
  */
 import './scss/layout.scss';
 
-
 import Tag from './components/base/Tag';
 import AbstractMap from './components/compositions/AbstractMap';
+import EmbeddedContent from  './components/compositions/embedded-content/EmbeddedContent';
 
 const components = {
   tag: {
@@ -53,6 +53,10 @@ const components = {
   abstractMap: {
     Component: AbstractMap,
     dataInit: 'abstract-map',
+  },
+  embeddedContent: {
+    Component: EmbeddedContent,
+    dataInit: 'embedded-content',
   },
 };
 
