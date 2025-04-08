@@ -1,6 +1,6 @@
 # Storybook + Tailwind CSS
 
-A demo setup with Storybook and Tailwind CSS, using the latest versions as of **February 19, 2025**.
+A demo setup with Storybook and Tailwind CSS, using the latest compatible versions as of **April 8, 2025**.
 
 ## Features
 - 📖 **Storybook** – UI component explorer
