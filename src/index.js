@@ -43,6 +43,7 @@ import './components/base/tag.scss';
 
 import Tag from './components/base/Tag';
 import AbstractMap from './components/compositions/AbstractMap';
+import MySolidComponent from "./components/compositions/MySolidComponent.jsx";
 
 const components = {
   tag: {
@@ -52,6 +53,10 @@ const components = {
   abstractMap: {
     Component: AbstractMap,
     dataInit: 'abstract-map',
+  },
+  solidComponent: {
+    Component: MySolidComponent,
+    dataInit: 'my-solid-component',
   },
 };
 
