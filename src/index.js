@@ -40,14 +40,20 @@ const components = {
 }
  */
 import './components/base/tag.scss';
+import './components/base/teaser-news-item.scss';
 
 import Tag from './components/base/Tag';
+import TeaserNewsItem from "./components/base/TeaserNewsItem";
 
 const components = {
   tag: {
     Component: Tag,
     dataInit: 'tag',
   },
+  teaserNewsItem: {
+    Component: TeaserNewsItem,
+    dataInit: 'teaser-news-item',
+  }
 };
 
 // ------------------------------

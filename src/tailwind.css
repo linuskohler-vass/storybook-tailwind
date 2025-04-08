@@ -2,7 +2,15 @@
 
 :root {
   --color-primary: #1DB954; /* Custom Green */
-  --color-secondary: #FF5733; /* Custom Orange */
+  --color-secondary: #2a9cf4; /* Custom Blue */
+}
+
+@layer body {
+  h2 {
+    font-size: 40px;
+    font-weight: bold;
+    padding: 50px 0 20px;
+  }
 }
 
 .bg-primary {
@@ -24,4 +32,5 @@
 @theme {
   --color-green-700: #6C7059;
   --color-green-500: #6C7000;
+  --color-swgblue-100: #2a9cf4;
 }
