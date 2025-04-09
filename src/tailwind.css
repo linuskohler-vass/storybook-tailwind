@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./components/base/teaser-news-item/teaser-news-item.css";
+@import "./components/base/tag/tag.css";
 
 @theme {
   --color-green-700: #6C7059;

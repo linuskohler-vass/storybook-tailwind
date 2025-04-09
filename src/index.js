@@ -3,23 +3,15 @@
 /*
 Instructions:
 -------------
-Every component needs a js file. Every js file must import the css accordingly.
+Only components with JS have to be imported here.
+If you only need CSS, it's enough to reverence the components css file in tailwind.css.
 
-Depending on if your component needs javascript, you need to import it differently
-here.
-
-A: your component does not need javascript
-------------------------------------------
-
-Import the js:
-import('./components/foo/foo');
-
-B: your component needs javascript
-------------------------------------------
+If your component needs JavaScript:
 
 1. step:
-Import the js:
+Import the js or jsx (solid component):
 import Foo from './components/foo/foo';
+
 2. step:
 Add it to the components object:
 const components = {
@@ -28,6 +20,7 @@ const components = {
   },
   ...
 }
+
 3. Add a data-init to your component markup:
 <div class="c_foo" data-init="foo"></div>
 Add the data-init and Component values to the components object:
@@ -38,14 +31,27 @@ const components = {
   },
   ...
 }
+
+4. Declare if it is a solid JS components or vanilla JS component, this is needed because they will be initialized
+differently:
+const components = {
+  foo: {
+    Component: Foo,
+    dataInit: 'foo',
+    type: 'vanilla',
+  },
+  ...
+}
+
  */
-import './components/base/tag/tag.scss';
+/* Old way of writing css: It gets built in main.css:
+This can be removed if we fully use tailwind we can stick to css and imports in tailwind and remove sass from the project */
 import './components/base/abstract-map/abstract-map.scss';
 
 import Tag from './components/base/tag/Tag';
 import AbstractMap from './components/base/abstract-map/AbstractMap';
 import TeaserNewsItem from "./components/base/teaser-news-item/TeaserNewsItem";
-import MySolidComponent from "./components/compositions/MySolidComponent.jsx";
+import MySolidComponent from "./components/compositions/my-solid-component/MySolidComponent.jsx";
 
 import { render as solidRender } from 'solid-js/web';
 
