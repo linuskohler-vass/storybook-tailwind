@@ -39,12 +39,15 @@ const components = {
   ...
 }
  */
-import './components/base/tag.scss';
-import { render as solidRender } from 'solid-js/web';
+import './components/base/tag/tag.scss';
+import './components/base/teaser-news-item/teaser-news-item.scss';
 
-import Tag from './components/base/Tag';
-import AbstractMap from './components/compositions/AbstractMap';
+import Tag from './components/base/tag/Tag';
+import AbstractMap from './components/base/abstract-map/AbstractMap';
+import TeaserNewsItem from "./components/base/teaser-news-item/TeaserNewsItem";
 import MySolidComponent from "./components/compositions/MySolidComponent.jsx";
+
+import { render as solidRender } from 'solid-js/web';
 
 const components = {
   tag: {
@@ -55,6 +58,11 @@ const components = {
   abstractMap: {
     Component: AbstractMap,
     dataInit: 'abstract-map',
+    type: 'vanilla',
+  },
+  teaserNewsItem: {
+    Component: TeaserNewsItem,
+    dataInit: 'teaser-news-item',
     type: 'vanilla',
   },
   solidComponent: {

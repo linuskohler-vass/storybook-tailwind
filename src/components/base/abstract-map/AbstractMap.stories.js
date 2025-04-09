@@ -3,13 +3,14 @@ import template from './abstract-map.hbs';
 const render = (args) => template(args);
 
 export default {
-  title: 'components/compositions/AbstractMap',
+  title: 'components/base/AbstractMap',
   parameters: {
     layout: 'centered',
-  }
+  },
+  tags: ['autodocs'],
 };
 
-export const tag = {
+export const map = {
   args: {
   },
   render,

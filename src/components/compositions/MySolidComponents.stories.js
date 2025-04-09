@@ -6,10 +6,11 @@ export default {
   title: 'Components/compositions/MySolidComponent',
   parameters: {
     layout: 'centered',
-  }
+  },
+  tags: ['autodocs'],
 };
 
-export const tag = {
+export const mySolidComponent = {
   args: {
   },
   render,

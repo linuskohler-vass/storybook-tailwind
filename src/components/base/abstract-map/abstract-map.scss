@@ -1,12 +1,13 @@
 .swg-abstract-map {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-areas: 'header' 'map' 'projects';
-  gap: 60px;
+  grid-template-areas: 'header' 'map' 'projects' 'button-container';
+  gap: 20px 60px;
+  max-width: 1400px;
 
   @media screen and (min-width: 1024px) {
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: 'header header' 'projects map';
+    grid-template-areas: 'header header' 'projects map' 'button-container button-container';
   }
 
   &__header {
@@ -20,13 +21,47 @@
 
   &__project {
     padding: 10px 20px;
+    box-shadow: 0 0 15px 0 rgba(0,0,0,.2);
+    margin-bottom: 20px;
+
+    &--open {
+      background-color: whitesmoke;
+    }
+
+    @media screen and (min-width: 1024px) {
+      box-shadow: none;
+      margin-bottom: 0;
+      border-top: 1px solid black;
+
+      &:first-child {
+        border-top: none;
+      }
+    }
 
     &:hover {
       cursor: pointer;
     }
 
     &__title {
+      display: flex;
+      justify-content: space-between;
 
+      &::after {
+        content: url('../../../assets/images/sg-anchor_arrow_marked.svg');
+        display: block;
+        width: 20px;
+        height: 20px;
+
+        .swg-abstract-map__project--open & {
+          transform: rotate(90deg);
+        }
+      }
+
+      @media screen and (min-width: 1024px) {
+        &::after {
+          content: '';
+        }
+      }
     }
 
     &__description {
@@ -46,6 +81,15 @@
 
     &__link {
       display: none;
+      font-size: 14px;
+      line-height: 23px;
+      text-align: left;
+      color: black;
+      text-transform: uppercase;
+
+      &:hover {
+        color: #e4032e;
+      }
 
       .swg-abstract-map__project--open & {
         display: -webkit-box;
@@ -62,7 +106,7 @@
 
     @media screen and (min-width: 1024px) {
       display: block;
-      background-color: lightgray;
+      background-color: whitesmoke;
       position: absolute;
       top: 0;
       left: 0;
@@ -70,7 +114,7 @@
       bottom: 0;
       z-index: -1;
       width: 100%;
-      height: 170px;
+      height: 184px;
       transition: transform 0.5s ease-in-out;
     }
   }
@@ -82,12 +126,12 @@
     position: relative;
 
     @media screen and (min-width: 1024px) {
+      width: 100%;
       height: unset;
     }
   }
 
   &__svg {
-    position: absolute;
   }
 
   &__highlighted-image {
@@ -109,6 +153,18 @@
 
     &.img2 {
       opacity: 0;
+    }
+  }
+
+  &__button-container {
+    grid-area: button-container;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+
+    @media screen and (min-width: 1024px) {
+      margin: 50px 0;
     }
   }
 }
