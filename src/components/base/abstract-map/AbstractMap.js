@@ -1,5 +1,3 @@
-import './abstract-map.scss';
-
 import {
   appendElement,
   getElementAttribute,

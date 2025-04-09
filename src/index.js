@@ -40,7 +40,7 @@ const components = {
 }
  */
 import './components/base/tag/tag.scss';
-import './components/base/teaser-news-item/teaser-news-item.scss';
+import './components/base/abstract-map/abstract-map.scss';
 
 import Tag from './components/base/tag/Tag';
 import AbstractMap from './components/base/abstract-map/AbstractMap';

@@ -1,27 +1,40 @@
 @import "tailwindcss";
-
-:root {
-  --color-primary: #1DB954; /* Custom Green */
-  --color-secondary: #FF5733; /* Custom Orange */
-}
-
-.bg-primary {
-  background-color: var(--color-primary);
-}
-
-.text-primary {
-  color: var(--color-primary);
-}
-
-.bg-secondary {
-  background-color: var(--color-secondary);
-}
-
-.text-secondary {
-  color: var(--color-secondary);
-}
+@import "./components/base/teaser-news-item/teaser-news-item.css";
 
 @theme {
   --color-green-700: #6C7059;
   --color-green-500: #6C7000;
 }
+
+@layer base {
+  main {
+    @apply container mx-auto;
+  }
+
+  h1 {
+    @apply text-[40px];
+  }
+
+  h2 {
+    @apply text-[32px];
+  }
+
+  h3 {
+    @apply text-[24px];
+  }
+
+  .section {
+    @apply m-3;
+  }
+
+  .leftbox {
+    @apply p-3 bg-stone-100;
+  }
+
+  /* header is loaded above the first section via fragment, to avoid CLS we set a fixed height with a placeholder here */
+  header:empty,
+  .header.block[data-block-status="loading"] {
+    @apply bg-gray-200 h-[122px] md:h-[74px] animate-pulse;
+  }
+}
+

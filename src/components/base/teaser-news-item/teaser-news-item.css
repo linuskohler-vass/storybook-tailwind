@@ -1,0 +1,6 @@
+@layer components {
+  .teaser-news-item {
+    --index: 1;
+    background-color: red;
+  }
+}
