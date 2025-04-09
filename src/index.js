@@ -40,6 +40,7 @@ const components = {
 }
  */
 import './components/base/tag.scss';
+import { render as solidRender } from 'solid-js/web';
 
 import Tag from './components/base/Tag';
 import AbstractMap from './components/compositions/AbstractMap';
@@ -49,27 +50,33 @@ const components = {
   tag: {
     Component: Tag,
     dataInit: 'tag',
+    type: 'classic',
   },
   abstractMap: {
     Component: AbstractMap,
     dataInit: 'abstract-map',
+    type: 'classic',
   },
   solidComponent: {
     Component: MySolidComponent,
     dataInit: 'my-solid-component',
+    type: 'solid',
   },
 };
 
 // ------------------------------
 // --- Initialization -----------
 // ------------------------------
-function doInit() {
-  // init components
-  Object.keys(components).forEach((key) => {
-    const component = components[key];
-    document
-      .querySelectorAll(`[data-init="${component.dataInit}"]`)
-      .forEach((element) => new component.Component(element));
+export function doInit() {
+  Object.values(components).forEach(({ Component, dataInit, type }) => {
+    const elements = document.querySelectorAll(`[data-init="${dataInit}"]`);
+    elements.forEach((el) => {
+      if (type === 'solid') {
+        solidRender(Component, el);
+      } else {
+        new Component(el);
+      }
+    });
   });
 }
 

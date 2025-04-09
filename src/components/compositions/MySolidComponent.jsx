@@ -8,7 +8,8 @@ export default function MySolidComponent() {
   });
 
   return (
-    <div class="p-4 border" data-init="my-solid-component">
+    <div class="p-4 border">
+      <h3>This is a solid component</h3>
       <p>Solid count: {count()}</p>
       <button class="mt-2 px-4 py-1 bg-blue-600 text-white cursor-pointer" onClick={() => setCount(count() + 1)}>
         Increment
