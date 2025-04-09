@@ -1,6 +1,6 @@
 import { createSignal, createEffect } from 'solid-js';
 
-export default function MySolidComponent() {
+export default function MySolidComponent(props) {
   const [count, setCount] = createSignal(0);
 
   createEffect(() => {
@@ -14,6 +14,9 @@ export default function MySolidComponent() {
       <button class="mt-2 px-4 py-1 bg-blue-600 text-white cursor-pointer" onClick={() => setCount(count() + 1)}>
         Increment
       </button>
+      {props.children && <div class="taglist">
+        {props.children}
+      </div>}
     </div>
   );
 }

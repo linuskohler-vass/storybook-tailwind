@@ -50,12 +50,12 @@ const components = {
   tag: {
     Component: Tag,
     dataInit: 'tag',
-    type: 'classic',
+    type: 'vanilla',
   },
   abstractMap: {
     Component: AbstractMap,
     dataInit: 'abstract-map',
-    type: 'classic',
+    type: 'vanilla',
   },
   solidComponent: {
     Component: MySolidComponent,
@@ -72,7 +72,8 @@ export function doInit() {
     const elements = document.querySelectorAll(`[data-init="${dataInit}"]`);
     elements.forEach((el) => {
       if (type === 'solid') {
-        solidRender(Component, el);
+        const childNodes = Array.from(el.childNodes);
+        solidRender(() => <Component>{childNodes}</Component>, el);
       } else {
         new Component(el);
       }
