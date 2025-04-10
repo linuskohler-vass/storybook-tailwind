@@ -1,5 +1,3 @@
-//import './tag.scss';
-
 export default class Tag {
 
   constructor(el) {

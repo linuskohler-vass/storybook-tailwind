@@ -31,6 +31,17 @@ const config = {
       },
     });
 
+    config.module.rules.push({
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['babel-preset-solid'],
+        },
+      },
+    });
+
     config.plugins.push(
       new BrowserSyncPlugin({
         host: 'localhost',

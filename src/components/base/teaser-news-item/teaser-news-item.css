@@ -1,0 +1,96 @@
+@layer components {
+  .teaser-news-item {
+    --index: 1;
+
+    @apply lg:flex lg:gap-5;
+
+    .images {
+      @apply hidden lg:block lg:h-[482px] lg:w-[425px] justify-center relative;
+
+      img {
+        @apply transition-all duration-1000 ease-in-out lg:object-cover lg:object-center h-full absolute top-0 left-0;
+      }
+    }
+
+    .teaser-news-items {
+      @apply w-full transition-colors grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 lg:gap-0 relative;
+
+      span.background-animation {
+        background-color: #f5f5f5;
+        z-index: -1;
+        @apply w-full block;
+        @apply absolute transition-all duration-500 right-0 opacity-0 lg:opacity-100 lg:h-[120px];
+      }
+
+      .teaser-news-items--item {
+        @apply block m-0 p-0;
+        @apply max-lg:shadow-[0_0_15px_0_rgba(0,0,0,.2)] max-lg:hover:shadow-[0_0_10px_2px_rgba(0,0,0,.6)];
+        @apply lg:border-b lg:border-[#b2b2b2] lg:last-of-type:border-b-0;
+        @apply ease-in-out transition-all duration-1000;
+
+        h3 {
+          @apply text-sky-500 lg:text-black;
+        }
+
+        &.current h3 {
+          @apply text-sky-500 lg:text-black lg:group-hover/item:text-sky-500;
+        }
+
+        &:first-of-type {
+          h3 {
+            @apply text-red-500 lg:text-black;
+          }
+
+          &.current h3 {
+            @apply text-red-500;
+          }
+        }
+
+        a {
+          @apply block md:min-h-[396px] relative lg:min-h-auto lg:h-[120px] lg:max-h-[120px];
+
+          img {
+            @apply h-[120px] w-full object-cover lg:hidden;
+          }
+
+          svg {
+            @apply absolute bottom-5 right-5 group-hover/item:fill-red-500 transition-all duration-500 lg:hidden;
+          }
+
+          & > div {
+            @apply grid grid-cols-1 p-[25px] space-y-2 lg:px-2 lg:py-5;
+
+            h3 {
+              @apply text-xl lg:text-2xl font-bold m-0 p-0;
+              @apply transition-colors duration-150;
+            }
+
+            div.meta {
+              @apply text-xs font-bold lg:text-base p-0 m-0;
+            }
+
+            div.text {
+              @apply hidden md:visible md:min-h-[50px] text-[18px] md:line-clamp-2 lg:hidden;
+            }
+          }
+        }
+      }
+
+      .teaser-news-items--item:nth-of-type(1):hover ~ .background-animation {
+        --index: 1;
+      }
+      .teaser-news-items--item:nth-of-type(2):hover ~ .background-animation {
+        --index: 2;
+      }
+      .teaser-news-items--item:nth-of-type(3):hover ~ .background-animation {
+        --index: 3;
+      }
+      .teaser-news-items--item:nth-of-type(4):hover ~ .background-animation {
+        --index: 4;
+      }
+      .teaser-news-items--item:nth-of-type(5):hover ~ .background-animation {
+        --index: 5;
+      }
+    }
+  }
+}

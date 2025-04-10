@@ -1,70 +1,51 @@
 /* eslint-disable import/first */
 
 /*
-Instructions:
--------------
-Every component needs a js file. Every js file must import the css accordingly.
 
-Depending on if your component needs javascript, you need to import it differently
-here.
 
-A: your component does not need javascript
-------------------------------------------
-
-Import the js:
-import('./components/foo/foo');
-
-B: your component needs javascript
-------------------------------------------
-
-1. step:
-Import the js:
-import Foo from './components/foo/foo';
-2. step:
-Add it to the components object:
-const components = {
-  foo: {
-    Component: Foo,
-  },
-  ...
-}
-3. Add a data-init to your component markup:
-<div class="c_foo" data-init="foo"></div>
-Add the data-init and Component values to the components object:
-const components = {
-  foo: {
-    Component: Foo,
-    dataInit: 'foo',
-  },
-  ...
-}
  */
-import './components/base/tag.scss';
+import './styles/tailwind.css';
+import { render as solidRender } from 'solid-js/web';
 
-import Tag from './components/base/Tag';
-import AbstractMap from './components/compositions/AbstractMap';
+/* Vanilla JS components imports */
+import Tag from './components/base/tag/Tag';
+import TeaserNewsItem from "./components/base/teaser-news-item/TeaserNewsItem";
+
+/* Solid JS components imports */
+import MySolidComponent from "./components/compositions/my-solid-component/MySolidComponent.jsx";
 
 const components = {
   tag: {
     Component: Tag,
     dataInit: 'tag',
+    type: 'vanilla',
   },
-  abstractMap: {
-    Component: AbstractMap,
-    dataInit: 'abstract-map',
+  teaserNewsItem: {
+    Component: TeaserNewsItem,
+    dataInit: 'teaser-news-item',
+    type: 'vanilla',
+  },
+  solidComponent: {
+    Component: MySolidComponent,
+    dataInit: 'my-solid-component',
+    type: 'solid',
   },
 };
 
 // ------------------------------
 // --- Initialization -----------
 // ------------------------------
-function doInit() {
-  // init components
-  Object.keys(components).forEach((key) => {
-    const component = components[key];
-    document
-      .querySelectorAll(`[data-init="${component.dataInit}"]`)
-      .forEach((element) => new component.Component(element));
+export function doInit() {
+  Object.values(components).forEach(({ Component, dataInit, type }) => {
+    const elements = document.querySelectorAll(`[data-init="${dataInit}"]`);
+    elements.forEach((el) => {
+      if (type === 'solid') {
+        const childNodes = Array.from(el.childNodes);
+        solidRender(() => <Component>{childNodes}</Component>, el);
+      } else {
+        new Component(el);
+      }
+    });
   });
 }
 

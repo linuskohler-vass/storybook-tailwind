@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@import "./fonts.css";
+@import "./theme.css";
+@import "./base.css";
+
+@import "./../components/base/teaser-news-item/teaser-news-item.css";
+@import "./../components/base/tag/tag.css";
+

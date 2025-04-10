@@ -40,13 +40,20 @@ const generatePlugins = (env) => {
 // -------------------------------------------
 // rules
 // -------------------------------------------
-const generateRules = () => {
+const generateRules = (env) => {
   const rules = [];
 
   rules.push({
-    test: /\.(js)$/,
+    test: /\.(js|jsx)$/,
     exclude: /node_modules/,
-    use: 'babel-loader',
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: [
+          'babel-preset-solid'
+        ],
+      },
+    },
   });
 
   rules.push({
@@ -58,39 +65,11 @@ const generateRules = () => {
         loader: 'postcss-loader',
         options: {
           postcssOptions: {
-            plugins: [
-              [
-                'autoprefixer',
-              ],
-            ],
+            plugins: {
+              autoprefixer: {},
+              ...(env.prod ? { cssnano: {} } : {}),
+            },
           },
-        },
-      },
-    ],
-  });
-
-  rules.push({
-    test: /\.scss$/i,
-    use: [
-      MiniCssExtractPlugin.loader,
-      // 'style-loader',
-      'css-loader',
-      {
-        loader: 'postcss-loader',
-        options: {
-          postcssOptions: {
-            plugins: [
-              [
-                'autoprefixer',
-              ],
-            ],
-          },
-        },
-      },
-      {
-        loader: 'sass-loader',
-        options: {
-          sourceMap: true,
         },
       },
     ],
@@ -133,7 +112,6 @@ module.exports = (env) => ({
   mode: env.prod ? 'production' : 'development',
   entry: {
     main: './src/index.js',
-    tailwind: './src/tailwind.css',
   },
   output: {
     filename: `js/[name]${env.prod ? '.[contenthash]' : ''}.js`,
@@ -142,7 +120,7 @@ module.exports = (env) => ({
     publicPath: env.prod ? '/etc.clientlibs/waw/clientlibs/clientlib-frontend-base/resources/' : '/',
   },
   module: {
-    rules: generateRules(),
+    rules: generateRules(env),
   },
   plugins: generatePlugins(env),
 });
