@@ -1,9 +1,9 @@
-import template from './tag.template.js';
+import template from './simple-tag.template.js';
 
 const render = (args) => template(args);
 
 export default {
-  title: 'components/base/Tag',
+  title: 'components/base/SimpleTag',
   parameters: {
     layout: 'centered',
   },

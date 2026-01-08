@@ -4,4 +4,4 @@
 @import "./base.css";
 
 /* Component styles */
-@import "./../components/base/tag/tag.css";
+@import "../components/base/simple-tag/simple-tag.css";

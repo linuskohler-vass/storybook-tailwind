@@ -1,4 +1,4 @@
-export default class Tag {
+export default class SimpleTag {
 
   constructor(el) {
     // selectors

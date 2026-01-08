@@ -1,6 +1,6 @@
 @layer components {
     .simple-tag {
-        @apply bg-green-300 p-2 text-lg font-light drop-shadow-xl transition hover:bg-green-700 hover:text-white;
+        @apply bg-custom-olive p-2 text-lg font-light drop-shadow-xl transition hover:bg-custom-military hover:text-white;
     }
 
     .simple-tag--highlighted {

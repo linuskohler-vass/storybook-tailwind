@@ -5,14 +5,14 @@ import { render as solidRender } from "solid-js/web";
 import { updateCssVars } from "./components/utils/cssVariables";
 
 /* Vanilla JS components imports */
-import Tag from "./components/base/tag/Tag";
+import SimpleTag from "./components/base/simple-tag/SimpleTag";
 
 /* Solid JS components imports */
 import MySolidComponent from "./components/solid/my-solid-component/MySolidComponent.jsx";
 
 const components = {
     tag: {
-        Component: Tag,
+        Component: SimpleTag,
         dataInit: "tag",
         type: "vanilla",
     },

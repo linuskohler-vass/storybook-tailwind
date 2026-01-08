@@ -1,7 +1,7 @@
 @theme {
-    --font-swissgrid: "TradeNextGothic", arial, sans-serif;
+    --font-custom: dmsans, arial, sans-serif;
 
     /* Custom colors */
-    --color-green-700: #6c7059;
-    --color-green-500: #6c7000;
+    --color-custom-olive: #6c7059;
+    --color-custom-military: #6c7000;
 }
