@@ -1,8 +1,9 @@
 @font-face {
-  font-family: 'TradeNextGothic';
-  src: url('../assets/fonts/TradeGothicNextLTW05-Normal.woff2') format('woff2'),
-  url('../assets/fonts/TradeGothicNextLTW05-Normal.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-family: TradeNextGothic;
+    src:
+        url("../assets/fonts/TradeGothicNextLTW05-Normal.woff2") format("woff2"),
+        url("../assets/fonts/TradeGothicNextLTW05-Normal.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }

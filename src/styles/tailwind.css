@@ -3,6 +3,5 @@
 @import "./theme.css";
 @import "./base.css";
 
-@import "./../components/base/teaser-news-item/teaser-news-item.css";
+/* Component styles */
 @import "./../components/base/tag/tag.css";
-

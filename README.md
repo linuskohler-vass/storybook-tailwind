@@ -1,6 +1,6 @@
 # Storybook + Tailwind CSS
 
-A demo setup with Storybook and Tailwind CSS, using the latest compatible versions as of **April 8, 2025**. 
+A demo setup with Storybook and Tailwind CSS, using the latest compatible versions as of **January 8, 2026**. 
 Write Vanilla JS components (if they are simple) or Solid JS components (when they are needed).
 
 ## Features

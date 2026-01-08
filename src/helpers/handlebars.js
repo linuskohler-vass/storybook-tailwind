@@ -1,7 +1,5 @@
-/* eslint-disable import/no-extraneous-dependencies */
-const handlebars = require('handlebars');
-const layouts = require('handlebars-layouts');
-/* eslint-enable import/no-extraneous-dependencies */
+import handlebars from 'handlebars/runtime';
+import layouts from 'handlebars-layouts';
 
 handlebars.registerHelper(layouts(handlebars));
 handlebars.registerHelper('increment', (value) => parseInt(value, 10) + 1);
@@ -12,8 +10,8 @@ handlebars.registerHelper('lowercase', (str) => {
   return str.toLowerCase();
 });
 handlebars.registerHelper('concat', (...args) => {
-  const options = args.pop();
   return args.join('');
 });
-
-module.exports = handlebars;
+handlebars.registerHelper('eq', (a, b) => {
+  return a === b;
+});

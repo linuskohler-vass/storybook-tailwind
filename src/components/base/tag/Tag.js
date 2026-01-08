@@ -3,12 +3,12 @@ export default class Tag {
   constructor(el) {
     // selectors
     this.domSelectors = {
-      tag: '.b_tag',
+      tag: '.simple-tag',
     };
 
     // classes
     this.classes = {
-      active: 'active',
+      active: 'simple-tag--active',
     };
 
     this.element = el;
@@ -18,11 +18,14 @@ export default class Tag {
   }
 
   init() {
-    console.log("Init for tag called!");
-    console.log(this.element);
+    // eslint-disable-next-line
+    console.log('Init for tag called!');
 
-    this.element.addEventListener('click', (ev) => {
-      console.log("Clicked on tag!");
+    this.element.addEventListener('click', () => {
+      // eslint-disable-next-line
+      console.log('Clicked on tag!');
+
+      this.element.classList.toggle(this.classes.active);
     });
   }
 }

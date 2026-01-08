@@ -1,60 +1,33 @@
-const path = require('path');
+import {mergeConfig} from 'vite';
+import handlebars from 'vite-plugin-handlebars';
+import path from 'path';
 
-/* eslint-disable import/no-extraneous-dependencies */
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-/* eslint-enable import/no-extraneous-dependencies */
-
-/** @type { import('@storybook/html-webpack5').StorybookConfig } */
-const config = {
-  stories: [
-    '../src/**/*.stories.js',
-  ],
-  staticDirs: [
-    '../dist',
-  ],
+export default {
+  stories: ['../src/**/*.stories.js'],
+  staticDirs: ['../public'],
   addons: [
-    "@storybook/addon-webpack5-compiler-swc",
-    "@storybook/addon-essentials",
-    "@chromatic-com/storybook",
-    "@storybook/addon-interactions",
-    '@storybook/addon-styling-webpack'
+    '@chromatic-com/storybook',
+    '@storybook/addon-docs',
   ],
-  webpackFinal: (config) => {
-    config.module.rules.push({
-      test: /\.hbs$/,
-      loader: 'handlebars-loader',
-      options: {
-        runtime: path.resolve(__dirname, '../src/helpers/handlebars.js'),
-        precompileOptions: {
-          knownHelpersOnly: false,
-        },
-      },
-    });
-
-    config.module.rules.push({
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['babel-preset-solid'],
-        },
-      },
-    });
-
-    config.plugins.push(
-      new BrowserSyncPlugin({
-        host: 'localhost',
-        port: 3000,
-        proxy: 'http://localhost:6006',
-      }),
-    );
-
-    return config;
-  },
   framework: {
-    name: "@storybook/html-webpack5",
+    name: '@storybook/html-vite',
     options: {},
   },
+
+  viteFinal: async (config) => {
+    return mergeConfig(config, {
+      plugins: [
+        handlebars({
+          partialDirectory: path.resolve(__dirname, '../src/helpers'),
+        }),
+      ],
+      resolve: {
+        alias: {
+          '@': path.resolve(__dirname, '../src'),
+        },
+      },
+
+      assetsInclude: ['**/*.hbs'],
+    });
+  },
 };
-export default config;

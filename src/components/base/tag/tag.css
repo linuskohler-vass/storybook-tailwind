@@ -1,9 +1,13 @@
 @layer components {
-  .b_tag {
-    @apply bg-green-300 text-lg p-2 drop-shadow-xl font-light transition hover:bg-green-700 hover:font-semibold hover:text-white;
-  }
+    .simple-tag {
+        @apply bg-green-300 p-2 text-lg font-light drop-shadow-xl transition hover:bg-green-700 hover:text-white;
+    }
 
-  .b_tag--highlighted {
-    @apply bg-amber-200;
-  }
+    .simple-tag--highlighted {
+        @apply bg-amber-200;
+    }
+
+    .simple-tag--active {
+        @apply font-semibold;
+    }
 }

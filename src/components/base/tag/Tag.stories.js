@@ -1,4 +1,4 @@
-import template from './tag.hbs';
+import template from './tag.template.js';
 
 const render = (args) => template(args);
 

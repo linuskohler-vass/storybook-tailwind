@@ -1,9 +1,9 @@
-import template from './my-solid-component.hbs';
+import template from './my-solid-component.template.js';
 
 const render = (args) => template(args);
 
 export default {
-  title: 'Components/compositions/MySolidComponent',
+  title: 'Components/solid/MySolidComponent',
   parameters: {
     layout: 'centered',
   },
@@ -15,4 +15,3 @@ export const mySolidComponent = {
   },
   render,
 };
-
