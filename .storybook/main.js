@@ -1,6 +1,10 @@
+import { fileURLToPath } from "node:url";
 import {mergeConfig} from 'vite';
 import handlebars from 'vite-plugin-handlebars';
-import path from 'path';
+import path, { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default {
   stories: ['../src/**/*.stories.js'],
