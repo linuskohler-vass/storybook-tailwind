@@ -2,6 +2,7 @@ import js from "@eslint/js";
 import { defineConfig } from "eslint/config";
 import storybookPlugin from "eslint-plugin-storybook";
 import solid from "eslint-plugin-solid";
+import globals from "globals";
 
 export default defineConfig([
   {
@@ -13,20 +14,7 @@ export default defineConfig([
       ecmaVersion: 2022,
       sourceType: 'module',
       globals: {
-        console: 'readonly',
-        window: 'readonly',
-        document: 'readonly',
-        fetch: 'readonly',
-        require: 'readonly',
-        module: 'readonly',
-        getComputedStyle: 'readonly',
-        MutationObserver: 'readonly',
-        setTimeout: 'readonly',
-        clearTimeout: 'readonly',
-        scrollTimeout: 'writable',
-        URL: 'readonly',
-        CustomEvent: 'readonly',
-        requestAnimationFrame: 'readonly',
+        ...globals.browser,
       },
     },
     plugins: { js, storybook: storybookPlugin },
