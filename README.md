@@ -5,7 +5,7 @@ Write Vanilla JS components (if they are simple) or Solid JS components (when th
 
 ## Features
 - 📖 **Storybook** – UI component explorer
-- 🔧 **Webpack** – Module bundler
+- 🔧 **Vite** – Fast build tool and dev server
 - 🎨 **Tailwind CSS** – Utility-first CSS framework
 - ⚛️ **SolidJS** – Lightning-fast reactive UI library
 
