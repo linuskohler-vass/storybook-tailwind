@@ -2,11 +2,11 @@ const cssVarCache = {};
 
 export function updateCssVars() {
   cssVarCache.breakpointXl = getComputedStyle(document.documentElement)
-    .getPropertyValue('--breakpoint-xl').trim();
+    .getPropertyValue("--breakpoint-xl").trim();
   cssVarCache.breakpointLg = getComputedStyle(document.documentElement)
-    .getPropertyValue('--breakpoint-lg').trim();
+    .getPropertyValue("--breakpoint-lg").trim();
   cssVarCache.breakpointMd = getComputedStyle(document.documentElement)
-    .getPropertyValue('--breakpoint-md').trim();
+    .getPropertyValue("--breakpoint-md").trim();
 }
 
 export function getBreakpointXl() {

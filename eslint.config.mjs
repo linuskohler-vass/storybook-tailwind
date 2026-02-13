@@ -8,6 +8,9 @@ export default defineConfig([
   {
     ignores: ["**/*.template.js", "!.storybook"],
   },
+  // ESLint recommended rules for all files
+  js.configs.recommended,
+  // Vanilla JS rules
   {
     files: ["src/components/**/*.{js,mjs,cjs}", "src/helpers/**/*.{js,mjs,cjs}", "src/pages/**/*.{js,mjs,cjs}"],
     languageOptions: {
@@ -17,25 +20,30 @@ export default defineConfig([
         ...globals.browser,
       },
     },
-    plugins: { js, storybook: storybookPlugin },
     rules: {
-      ...js.configs.recommended.rules,
       "no-console": ["warn", { allow: ["warn", "error"] }],
-      quotes: ["warn", "single"],
+      quotes: ["warn", "double"],
       semi: ["warn", "always"],
     },
   },
+  // SolidJS-specific rules
   {
-    files: ["src/components/**/*.{jsx,tsx}"],
+    files: ["src/**/*.{jsx,tsx}"],
     plugins: { solid },
     languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'module',
+      globals: {
+        ...globals.browser,
+      },
       parserOptions: {
         ecmaFeatures: { jsx: true },
-        sourceType: 'module',
       },
     },
     rules: {
       ...solid.configs.recommended.rules,
     },
   },
+  // Storybook-specific rules for story files
+  ...storybookPlugin.configs['flat/recommended'],
 ]);

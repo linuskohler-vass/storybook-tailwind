@@ -1,4 +1,4 @@
-import { getBreakpointXl, getBreakpointMd, getBreakpointLg } from './cssVariables';
+import { getBreakpointXl, getBreakpointMd, getBreakpointLg } from "./cssVariables";
 
 export function isDesktopViewport() {
   const breakpointXl = getBreakpointXl();

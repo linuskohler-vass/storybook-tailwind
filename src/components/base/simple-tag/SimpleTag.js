@@ -3,12 +3,12 @@ export default class SimpleTag {
   constructor(el) {
     // selectors
     this.domSelectors = {
-      tag: '.simple-tag',
+      tag: ".simple-tag",
     };
 
     // classes
     this.classes = {
-      active: 'simple-tag--active',
+      active: "simple-tag--active",
     };
 
     this.element = el;
@@ -21,7 +21,7 @@ export default class SimpleTag {
     // eslint-disable-next-line
     console.log('Init for tag called!');
 
-    this.element.addEventListener('click', () => {
+    this.element.addEventListener("click", () => {
       // eslint-disable-next-line
       console.log('Clicked on tag!');
 

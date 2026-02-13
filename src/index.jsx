@@ -27,7 +27,7 @@ const components = {
 // --- Initialization -----------
 // ------------------------------
 function initComponents() {
-    Object.values(components).forEach(({ Component, dataInit, type, provider }) => {
+    Object.values(components).forEach(({ Component, dataInit, type }) => {
         const elements = document.querySelectorAll(`[data-init="${dataInit}"]`);
         elements.forEach((el) => {
             if (type === "solid") {

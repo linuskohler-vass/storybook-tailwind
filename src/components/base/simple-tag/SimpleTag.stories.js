@@ -1,26 +1,26 @@
-import template from './simple-tag.template.js';
+import template from "./simple-tag.template.js";
 
 const render = (args) => template(args);
 
 export default {
-  title: 'components/base/SimpleTag',
+  title: "components/base/SimpleTag",
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 };
 
-export const tag = {
+export const Tag = {
   args: {
-    text: 'some tag',
+    text: "some tag",
     hoverFill: false,
   },
   render,
 };
 
-export const highlight = {
+export const Highlight = {
   args: {
-    text: 'some tag',
+    text: "some tag",
     highlight: true,
   },
   render,

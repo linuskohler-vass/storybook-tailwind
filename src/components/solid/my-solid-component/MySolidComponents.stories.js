@@ -1,16 +1,16 @@
-import template from './my-solid-component.template.js';
+import template from "./my-solid-component.template.js";
 
 const render = (args) => template(args);
 
 export default {
-  title: 'Components/solid/MySolidComponent',
+  title: "Components/solid/MySolidComponent",
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 };
 
-export const mySolidComponent = {
+export const MySolidComponent = {
   args: {
   },
   render,
