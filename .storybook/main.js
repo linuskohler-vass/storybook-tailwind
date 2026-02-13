@@ -12,6 +12,7 @@ export default {
   addons: [
     '@chromatic-com/storybook',
     '@storybook/addon-docs',
+    '@storybook/addon-a11y',
   ],
   framework: {
     name: '@storybook/html-vite',
