@@ -21,17 +21,18 @@ export default defineConfig({
   },
   build: {
     assetsInlineLimit: 0,
+    manifest: true,
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
       },
       output: {
         entryFileNames: () => {
-          return 'js/main.js';
+          return 'js/main-[hash].js';
         },
         assetFileNames: (assetInfo) => {
           if (assetInfo.name === 'main.css') {
-            return 'css/main.css';
+            return 'css/main-[hash].css';
           }
           if (/\.(ttf|otf|eot|woff2?)$/.test(assetInfo.name)) {
             return 'fonts/[name][extname]';
